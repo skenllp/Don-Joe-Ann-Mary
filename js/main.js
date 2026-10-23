@@ -248,7 +248,7 @@
 
   var HERO_CANDIDATES = (
     (heroImg && heroImg.getAttribute('data-candidates')) ||
-    'assets/images/hero/hero-alt.png,assets/images/hero/hero.png,assets/images/hero/hero.webp,assets/images/hero/hero.avif'
+    'assets/images/gallery/hero.jpeg,assets/images/hero/hero-alt.png,assets/images/hero/hero.png'
   ).split(',').map(function (s) { return s.trim(); }).filter(Boolean);
 
   function loadAndDecodeUrl(url) {
@@ -318,7 +318,7 @@
         return true;
       })
       .catch(function () {
-        if (heroImg) heroImg.src = 'assets/images/hero/hero-alt.png';
+        if (heroImg) heroImg.src = 'assets/images/gallery/hero.jpeg';
         heroIsReady = true;
         return false;
       });

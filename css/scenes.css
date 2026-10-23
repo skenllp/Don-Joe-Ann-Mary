@@ -218,12 +218,9 @@ img.section-bg{
   transition:opacity .6s ease .3s;
 }
 
-/* Overlay tint for hero */
+/* Overlay tint for hero - 30% black overlay for text visibility */
 .scene--hero .section-overlay{
-  background:
-    radial-gradient(70% 40% at 50% 18%,rgba(248,240,220,.10),transparent 70%),
-    linear-gradient(180deg,rgba(248,242,224,.04) 0%,transparent 20%,
-      transparent 72%,rgba(248,238,218,.24) 100%);
+  background: rgba(0, 0, 0, 0.30);
 }
 
 /* ============================================================
@@ -276,7 +273,7 @@ img.section-bg{
 /* subtitle + scroll also appear with content */
 .scene--hero > .hero-subtitle{  opacity:0; transition:opacity .7s var(--ease) .25s; }
 .scene--hero > .scroll-indicator{ opacity:0; transition:opacity .7s ease .35s; }
-.scene--hero.loaded.text-ready > .hero-subtitle{ opacity:.85; }
+.scene--hero.loaded.text-ready > .hero-subtitle{ opacity:1; }
 .scene--hero.loaded.text-ready > .scroll-indicator{ opacity:1; }
 
 /* bless line at top fades in independently */

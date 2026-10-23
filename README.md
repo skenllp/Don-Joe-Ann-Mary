@@ -1,1 +1,1 @@
-﻿St. Dominic's Syro Malabar Catholic Cathedral Church, Kanjirappally-https://maps.app.goo.gl/zrhFGs5GF6iFLuZN9
+﻿St. Dominic's Syro Malabar Catholic Cathedral Church, Kanjirappally-https://maps.app.goo.gl/VqU5G5SVz7ed1R7DA
