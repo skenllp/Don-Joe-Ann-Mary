@@ -12,7 +12,7 @@
   'use strict';
 
   /* ── PASTE YOUR DEPLOYED APPS SCRIPT WEB APP URL HERE ── */
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxHufeV3H6hPLvsDXiAyV4n0su5XruQY9lbVb65bBc65wott3jcA6-9pIKRWxxqb4t3Jw/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJnJZ5M6QcoROwCaME0YFU-uUVMqwtWCXNY45YOPsFbfGCfuEDiiM_DJ8uUiH2h5Yh/exec';
   /* ─────────────────────────────────────────────────────── */
 
   var form = document.getElementById('rsvpForm');
@@ -78,6 +78,18 @@
     }
   }
 
+  /* Toggle guest count field when declining */
+  var attendanceRadios = form.querySelectorAll('input[name="attendance"]');
+  var guestsField = document.getElementById('guestsField');
+  Array.prototype.forEach.call(attendanceRadios, function (radio) {
+    radio.addEventListener('change', function () {
+      if (guestsField) {
+        var isAttending = form.querySelector('input[name="attendance"]:checked').value === 'Joyfully Accepts';
+        guestsField.style.display = isAttending ? '' : 'none';
+      }
+    });
+  });
+
   /* ──────────────────────────────────────────────────────────
      SUBMIT — hidden iframe pattern (no CORS issues)
   ────────────────────────────────────────────────────────── */
@@ -87,9 +99,15 @@
 
     if (!validate()) return;
 
+    var attendanceVal = (form.querySelector('input[name="attendance"]:checked') || {}).value || 'Joyfully Accepts';
+    var isAttending = attendanceVal === 'Joyfully Accepts';
+
     /* Collect data */
     var data = {
-      name: document.getElementById('rsvpName').value.trim(),
+      name: (document.getElementById('rsvpName').value || '').trim(),
+      phone: (document.getElementById('rsvpPhone') ? document.getElementById('rsvpPhone').value : '').trim(),
+      attendance: attendanceVal,
+      guests: isAttending && document.getElementById('rsvpGuests') ? document.getElementById('rsvpGuests').value : '0',
       wish: (document.getElementById('rsvpWish').value || '').trim(),
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
     };
@@ -122,29 +140,24 @@
     document.body.appendChild(hiddenForm);
     hiddenForm.submit();
 
-    /* After 2.5s assume success (iframe POST is fire-and-forget) */
     setTimeout(function () {
       setLoading(false);
-
-      /* Hide form, show success — hide wishes wall too */
       form.hidden = true;
       successBox.hidden = false;
 
       var wishesSection = document.querySelector('.wishes-section');
       if (wishesSection) wishesSection.hidden = true;
 
-      /* Prepend wish card immediately if a wish was written */
       if (data.wish) {
         addWishCard(data.name, data.wish, true);
       }
 
-      /* Clean up DOM */
+      /* Clean up hidden form DOM */
       try { document.body.removeChild(hiddenForm); } catch (x) { }
       setTimeout(function () {
         try { document.body.removeChild(iframe); } catch (x) { }
       }, 3000);
-
-    }, 2500);
+    }, 1200);
   });
 
   /* ──────────────────────────────────────────────────────────

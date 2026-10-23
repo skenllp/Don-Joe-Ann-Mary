@@ -151,8 +151,8 @@
       <path d="M32 52L10 30a13 13 0 0122-14 13 13 0 0122 14z"/>
     </symbol>
 
-    <symbol id="i-pillar" viewBox="0 0 64 64">
-      <path d="M12 12h40M15 20h34M20 20v28M44 20v28M15 48h34M11 56h42"/>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.63C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.11 6.97C8.94 6.97 8.67 7.03 8.44 7.28C8.2 7.54 7.55 8.16 7.55 9.42C7.55 10.67 8.47 11.89 8.6 12.06C8.72 12.24 10.4 14.82 12.96 15.93C13.57 16.19 14.05 16.35 14.42 16.47C15.03 16.66 15.58 16.63 16.02 16.57C16.51 16.49 17.53 15.95 17.74 15.35C17.95 14.76 17.95 14.25 17.89 14.15C17.83 14.05 17.65 13.99 17.39 13.86C17.13 13.73 15.86 13.11 15.63 13.02C15.39 12.93 15.22 12.89 15.05 13.15C14.88 13.41 14.39 13.99 14.24 14.16C14.09 14.33 13.95 14.35 13.68 14.22C13.42 14.09 12.58 13.81 11.58 12.93C10.8 12.24 10.28 11.39 10.13 11.13C9.98 10.87 10.11 10.73 10.24 10.6C10.36 10.48 10.51 10.29 10.64 10.14C10.77 9.99 10.82 9.88 10.9 9.71C10.99 9.54 10.94 9.4 10.88 9.27C10.82 9.14 10.31 7.9 10.1 7.38C9.89 6.88 9.68 6.95 9.52 6.94C9.38 6.94 9.21 6.97 9.04 6.97H9.11Z"/>
     </symbol>
   </defs>
 </svg>
@@ -678,7 +678,7 @@
             </div>
           </figure>
 
-          <figure class="gallery-item reveal" data-delay="2" data-index="1">
+          <!-- <figure class="gallery-item reveal" data-delay="2" data-index="1">
             <div class="gallery-card" role="button" tabindex="0" aria-label="View photo 2 of 4 in full screen">
               <img src="assets/images/gallery/couples2.jpeg" alt="Don Joe &amp; Ann Mary" loading="lazy" decoding="async">
               <div class="gallery-card__overlay">
@@ -693,7 +693,7 @@
                 </span>
               </div>
             </div>
-          </figure>
+          </figure> -->
 
           <figure class="gallery-item reveal" data-delay="3" data-index="2">
             <div class="gallery-card" role="button" tabindex="0" aria-label="View photo 3 of 4 in full screen">
@@ -790,19 +790,18 @@
     </div>
   </section>
 
-  <!-- ---------- SEND WISHES ---------- -->
+  <!-- ---------- RSVP ---------- -->
   <section id="rsvp" class="scene scene--flow scene--beige">
     <img class="section-bg" src="assets/images/decorations/wash-beige.svg" alt="" loading="lazy" decoding="async">
     <div class="section-overlay" aria-hidden="true"></div>
 
-    <!-- hidden iframe receives the silent form POST -->
     <iframe name="rsvpSink" style="display:none;position:absolute;width:0;height:0;border:0;" aria-hidden="true"></iframe>
 
     <div class="section-content">
 
       <div class="sec-head reveal">
-        <p class="kicker">Leave a Blessing</p>
-        <h2 class="sec-title">Send Wishes</h2>
+        <p class="kicker">Join the Celebration</p>
+        <h2 class="sec-title">RSVP</h2>
         <div class="divider" aria-hidden="true">
           <span class="divider-line"></span>
           <svg class="ico" aria-hidden="true"><use href="#i-heart"></use></svg>
@@ -811,34 +810,70 @@
       </div>
 
       <div class="rsvp-card reveal" data-delay="1">
-
-        <!-- Success state -->
+ 
         <div class="rsvp-success" id="rsvpSuccess" hidden>
           <p class="rsvp-success__title">Thank you!</p>
+          <p style="font-size:15px;color:var(--ink-soft);margin-top:6px;">Your RSVP response has been received with love.</p>
         </div>
-
-        <!-- Form -->
+ 
         <form id="rsvpForm" novalidate>
 
-          <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvpName">Full Name <span aria-hidden="true">*</span></label>
-            <input class="rsvp-input" id="rsvpName" name="name" type="text"
-                   placeholder="Your full name" autocomplete="name" required>
-            <span class="rsvp-err" id="errName" role="alert" hidden></span>
+          <div class="rsvp-row">
+            <div class="rsvp-field">
+              <label class="rsvp-label" for="rsvpName">Full Name <span aria-hidden="true">*</span></label>
+              <input class="rsvp-input" id="rsvpName" name="name" type="text"
+                     placeholder="Your full name" autocomplete="name" required>
+              <span class="rsvp-err" id="errName" role="alert" hidden>Please enter your name</span>
+            </div>
+
+            <div class="rsvp-field">
+              <label class="rsvp-label" for="rsvpPhone">Phone Number <span class="rsvp-optional">(Optional)</span></label>
+              <input class="rsvp-input" id="rsvpPhone" name="phone" type="tel"
+                     placeholder="Your contact number" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="rsvp-row">
+            <div class="rsvp-field">
+              <label class="rsvp-label">Will you attend? <span aria-hidden="true">*</span></label>
+              <div class="rsvp-radio-group">
+                <label class="rsvp-radio">
+                  <input type="radio" name="attendance" value="Joyfully Accepts" checked>
+                  <span class="rsvp-radio__mark"></span>
+                  <span>Joyfully Accepts</span>
+                </label>
+                <label class="rsvp-radio">
+                  <input type="radio" name="attendance" value="Regretfully Declines">
+                  <span class="rsvp-radio__mark"></span>
+                  <span>Regretfully Declines</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="rsvp-field" id="guestsField">
+              <label class="rsvp-label" for="rsvpGuests">Number of Guests</label>
+              <select class="rsvp-input rsvp-select" id="rsvpGuests" name="guests">
+                <option value="1">1 Guest</option>
+                <option value="2">2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+                <option value="5+">5+ Guests</option>
+              </select>
+            </div>
           </div>
 
           <div class="rsvp-field">
-            <label class="rsvp-label" for="rsvpWish">Your Wishes</label>
+            <label class="rsvp-label" for="rsvpWish">Wishes &amp; Blessings <span class="rsvp-optional">(Optional)</span></label>
             <textarea class="rsvp-input rsvp-textarea" id="rsvpWish" name="wish"
-                      rows="3" placeholder="Write a blessing or wish for the couple…"></textarea>
+                      rows="3" placeholder="Leave a heartfelt message for Don Joe &amp; Ann Mary…"></textarea>
           </div>
 
           <div class="rsvp-submit-row">
             <button type="submit" class="rsvp-submit" id="rsvpSubmit">
-              <span class="rsvp-submit__label">Send Wishes</span>
-              <span class="rsvp-submit__loading" hidden aria-label="Sending…">
+              <span class="rsvp-submit__label">Submit RSVP</span>
+              <span class="rsvp-submit__loading" hidden aria-label="Submitting…">
                 <span class="rsvp-spinner" aria-hidden="true"></span>
-                <span>Sending…</span>
+                <span>Submitting…</span>
               </span>
             </button>
             <p class="rsvp-err rsvp-err--submit" id="errSubmit" role="alert" hidden>
@@ -848,8 +883,6 @@
 
         </form>
       </div>
-
- 
 
     </div>
   </section>

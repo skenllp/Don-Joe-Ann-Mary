@@ -2075,6 +2075,15 @@ body.finale-particles .finale-fallback{opacity:0}
   box-shadow:0 10px 26px -12px rgba(197,160,89,.8);
   transition:transform .3s var(--ease),box-shadow .3s var(--ease),opacity .3s;
 }
+.rsvp-submit--whatsapp{
+  background:linear-gradient(145deg,#25D366,#128C7E);
+  color:#FFFFFF;
+  box-shadow:0 10px 26px -10px rgba(37,211,102,.65);
+}
+.rsvp-submit--whatsapp:hover:not(:disabled){
+  transform:translateY(-2px);
+  box-shadow:0 16px 34px -10px rgba(37,211,102,.8);
+}
 .rsvp-submit:hover:not(:disabled){
   transform:translateY(-2px);
   box-shadow:0 16px 34px -12px rgba(197,160,89,.95);
