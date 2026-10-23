@@ -439,7 +439,7 @@
       </div>
 
       <p class="lede reveal" data-delay="1">
-        Together with their families, Don Joe and Ann Mary cordially invite you to celebrate their wedding.
+        Together with their families, Don and Ann cordially invite you to celebrate their wedding.
       </p>
 
       <ul class="facts">
@@ -850,15 +850,32 @@
               </div>
             </div>
 
+            <div class="rsvp-field">
+              <label class="rsvp-label">Whose Guest are you? <span aria-hidden="true">*</span></label>
+              <div class="rsvp-radio-group">
+                <label class="rsvp-radio">
+                  <input type="radio" name="side" value="Groom's Side (Don Joe)" checked>
+                  <span class="rsvp-radio__mark"></span>
+                  <span>Groom's Side (Don Joe)</span>
+                </label>
+                <label class="rsvp-radio">
+                  <input type="radio" name="side" value="Bride's Side (Ann Mary)">
+                  <span class="rsvp-radio__mark"></span>
+                  <span>Bride's Side (Ann Mary)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="rsvp-row" id="guestsRow">
             <div class="rsvp-field" id="guestsField">
               <label class="rsvp-label" for="rsvpGuests">Number of Guests</label>
-              <select class="rsvp-input rsvp-select" id="rsvpGuests" name="guests">
-                <option value="1">1 Guest</option>
-                <option value="2">2 Guests</option>
-                <option value="3">3 Guests</option>
-                <option value="4">4 Guests</option>
-                <option value="5+">5+ Guests</option>
-              </select>
+              <div class="rsvp-counter">
+                <button type="button" class="rsvp-counter__btn" id="guestDec" aria-label="Decrease guest count">−</button>
+                <input class="rsvp-input rsvp-counter__input" id="rsvpGuests" name="guests" type="number"
+                       value="1" min="1" max="20" readonly>
+                <button type="button" class="rsvp-counter__btn" id="guestInc" aria-label="Increase guest count">+</button>
+              </div>
             </div>
           </div>
 

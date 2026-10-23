@@ -2022,6 +2022,66 @@ body.finale-particles .finale-fallback{opacity:0}
   cursor:pointer;
 }
 
+/* ── Number Stepper (Counter) ── */
+.rsvp-counter{
+  display:inline-flex;
+  align-items:stretch;
+  width:100%;
+  max-width:220px;
+  background:rgba(255,255,255,.95);
+  border:1.5px solid rgba(137,75,161,.35);
+  border-radius:6px;
+  overflow:hidden;
+  transition:border-color .22s,box-shadow .22s;
+}
+.rsvp-counter:focus-within{
+  border-color:var(--purple-lt);
+  box-shadow:0 0 0 3px rgba(137,75,161,.15);
+}
+.rsvp-counter__btn{
+  width:46px;
+  min-width:46px;
+  padding:0;
+  border:0;
+  background:rgba(137,75,161,.08);
+  color:var(--purple);
+  font-family:var(--f-body);
+  font-size:20px;
+  font-weight:600;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:background .2s,color .2s;
+  user-select:none;
+}
+.rsvp-counter__btn:hover{
+  background:var(--purple-lt);
+  color:#fff;
+}
+.rsvp-counter__btn:active{
+  transform:scale(0.96);
+}
+.rsvp-counter__input{
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  text-align:center;
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink);
+  padding:10px 4px;
+  pointer-events:none; /* controlled via buttons */
+  -moz-appearance:textfield;
+}
+.rsvp-counter__input::-webkit-outer-spin-button,
+.rsvp-counter__input::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+  margin:0;
+}
+
 /* ── Radio group ── */
 .rsvp-radio-group{
   display:flex;flex-direction:column;gap:10px;padding-top:2px;

@@ -12,7 +12,7 @@
   'use strict';
 
   /* ── PASTE YOUR DEPLOYED APPS SCRIPT WEB APP URL HERE ── */
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJnJZ5M6QcoROwCaME0YFU-uUVMqwtWCXNY45YOPsFbfGCfuEDiiM_DJ8uUiH2h5Yh/exec';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx81v29gSYjgpMzZ8kpIL04jv4WNPmLWkMJD2DRzXx5PsYDsPYtulcm2-CYo52Ps_0k6w/exec';
   /* ─────────────────────────────────────────────────────── */
 
   var form = document.getElementById('rsvpForm');
@@ -81,15 +81,38 @@
 
   /* Toggle guest count field when declining */
   var attendanceRadios = form.querySelectorAll('input[name="attendance"]');
-  var guestsField = document.getElementById('guestsField');
+  var guestsRow = document.getElementById('guestsRow') || document.getElementById('guestsField');
   Array.prototype.forEach.call(attendanceRadios, function (radio) {
     radio.addEventListener('change', function () {
-      if (guestsField) {
+      if (guestsRow) {
         var isAttending = form.querySelector('input[name="attendance"]:checked').value === 'Joyfully Accepts';
-        guestsField.style.display = isAttending ? '' : 'none';
+        guestsRow.style.display = isAttending ? '' : 'none';
       }
     });
   });
+
+  /* Guest count stepper (+ / - buttons) */
+  var guestInput = document.getElementById('rsvpGuests');
+  var btnDec = document.getElementById('guestDec');
+  var btnInc = document.getElementById('guestInc');
+
+  if (guestInput && btnDec && btnInc) {
+    btnDec.addEventListener('click', function () {
+      var current = parseInt(guestInput.value, 10) || 1;
+      var min = parseInt(guestInput.min, 10) || 1;
+      if (current > min) {
+        guestInput.value = current - 1;
+      }
+    });
+
+    btnInc.addEventListener('click', function () {
+      var current = parseInt(guestInput.value, 10) || 1;
+      var max = parseInt(guestInput.max, 10) || 20;
+      if (current < max) {
+        guestInput.value = current + 1;
+      }
+    });
+  }
 
   /* ──────────────────────────────────────────────────────────
      SUBMIT — hidden iframe pattern (no CORS issues)
@@ -102,11 +125,13 @@
 
     var attendanceVal = (form.querySelector('input[name="attendance"]:checked') || {}).value || 'Joyfully Accepts';
     var isAttending = attendanceVal === 'Joyfully Accepts';
+    var sideVal = (form.querySelector('input[name="side"]:checked') || {}).value || "Groom's Side (Don Joe)";
 
     /* Collect data */
     var data = {
       name: (document.getElementById('rsvpName').value || '').trim(),
       phone: (document.getElementById('rsvpPhone') ? document.getElementById('rsvpPhone').value : '').trim(),
+      side: sideVal,
       attendance: attendanceVal,
       guests: isAttending && document.getElementById('rsvpGuests') ? document.getElementById('rsvpGuests').value : '0',
       wish: (document.getElementById('rsvpWish').value || '').trim(),
@@ -165,6 +190,8 @@
      WISH CARD BUILDER
   ────────────────────────────────────────────────────────── */
   function addWishCard(name, wish, prepend) {
+    if (!wishesWall) return;
+
     /* Hide "be the first" placeholder */
     if (wishesEmpty) wishesEmpty.hidden = true;
 
@@ -205,6 +232,8 @@
       });
   }
 
-  loadWishes();
+  if (wishesWall) {
+    loadWishes();
+  }
 
 })();
