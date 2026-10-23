@@ -755,8 +755,8 @@
      8 · Countdown — 29 Dec 2026, 10:00 IST
      --------------------------------------------------------- */
   (function countdown() {
-    /* Wedding: Tuesday 29 December 2026 at 10:00 AM IST (UTC+5:30) */
-    var target = new Date('2026-12-29T10:00:00+05:30').getTime();
+    /* Wedding: Tuesday 29 December 2026 at 11:00 AM IST (UTC+5:30) */
+    var target = new Date('2026-12-29T11:00:00+05:30').getTime();
     var d = document.getElementById('cdD'),
         h = document.getElementById('cdH'),
         m = document.getElementById('cdM'),

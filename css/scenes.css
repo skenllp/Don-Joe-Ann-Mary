@@ -108,7 +108,7 @@ img.section-bg{
 }
 
 .scene--dark .sec-title,
-.scene--finale .sec-title   { color:#FAF4FB; }
+.scene--finale .sec-title   { color:#FFFFFF; }
 .scene--dark .kicker,
 .scene--finale .kicker      { color:var(--gold-lt); opacity:.9; }
 
@@ -218,9 +218,9 @@ img.section-bg{
   transition:opacity .6s ease .3s;
 }
 
-/* Overlay tint for hero - 30% black overlay for text visibility */
+/* Overlay tint for hero - overlay removed per user request */
 .scene--hero .section-overlay{
-  background: rgba(0, 0, 0, 0.30);
+  display:none;
 }
 
 /* ============================================================
