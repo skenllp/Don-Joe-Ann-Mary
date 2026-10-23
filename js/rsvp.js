@@ -47,10 +47,11 @@
 
   function setLoading(on) {
     submitBtn.disabled = on;
+    submitBtn.classList.toggle('is-loading', on);
     var lbl = submitBtn.querySelector('.rsvp-submit__label');
     var spin = submitBtn.querySelector('.rsvp-submit__loading');
-    if (lbl) lbl.hidden = on;
-    if (spin) spin.hidden = !on;
+    if (lbl) lbl.style.display = on ? 'none' : '';
+    if (spin) spin.style.display = on ? 'inline-flex' : 'none';
   }
 
   /* ──────────────────────────────────────────────────────────
