@@ -668,6 +668,7 @@ body:not(.is-revealed) #site *{animation-play-state:paused!important}
   line-height:1.85;color:var(--ink-soft);font-weight:300;
 }
 .lede em{font-style:italic;color:var(--sage-dk);font-weight:400}
+.lede strong,.lede b{font-weight:700;color:var(--ink)}
 
 /* ---------- BIBLE VERSE ---------- */
 .verse-card{
