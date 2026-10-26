@@ -128,13 +128,14 @@
     var sideVal = (form.querySelector('input[name="side"]:checked') || {}).value || "Groom's Side (Don Joe)";
 
     /* Collect data */
+    var wishEl = document.getElementById('rsvpWish');
     var data = {
-      name: (document.getElementById('rsvpName').value || '').trim(),
+      name: (document.getElementById('rsvpName') ? document.getElementById('rsvpName').value : '').trim(),
       phone: (document.getElementById('rsvpPhone') ? document.getElementById('rsvpPhone').value : '').trim(),
       side: sideVal,
       attendance: attendanceVal,
       guests: isAttending && document.getElementById('rsvpGuests') ? document.getElementById('rsvpGuests').value : '0',
-      wish: (document.getElementById('rsvpWish').value || '').trim(),
+      wish: (wishEl ? wishEl.value : '').trim(),
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
     };
 
